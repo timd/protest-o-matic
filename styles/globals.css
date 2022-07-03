@@ -1,5 +1,11 @@
+:root {
+    --bk: #0a1c0a;
+    --main: antiquewhite;
+}
+
 html,
-body {
+body,
+main {
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -13,6 +19,16 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+header {
+    width: 100vw;
+    min-height: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    background: var(--main);
+    color: var(--bk);
 }
 
 main {
