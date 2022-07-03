@@ -6,8 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-
   const results = await getProtests();
   res.status(200).json({ results: results });
-
 }

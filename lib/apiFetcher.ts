@@ -2,22 +2,23 @@ import axios from 'axios';
 import { format } from 'date-fns';
 
 interface ApiResponse {
-  messages: Object
   results: Object
-  index: Array<IDemonstration>
+  messages: Object
   item: Array<Object>
+  index: Array<IDemonstration>
+ 
 }
 
 export interface IDemonstration {
   id: string
-  datum: string
   von: string
   bis: string
-  thema: string
   plz: string
+  datum: string
+  thema: string
+  lfdnr: string
   strasse_nr: string
   aufzugsstrecke: string
-  lfdnr: string
 }
 
 export async function getProtests() {
@@ -47,5 +48,11 @@ function parseSourceJson(index: Array<IDemonstration>): Array<IDemonstration> {
   const filteredResults = index.filter(demo => {
     return demo.datum == filterString;
   });
+
+  filteredResults.forEach( demo => {
+    const newThema = demo.thema.split(' (vom');
+    demo.thema = newThema[0];
+  })
+
   return filteredResults;
 }
