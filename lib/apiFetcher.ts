@@ -24,7 +24,6 @@ export interface IDemonstration {
 const apiUrl = 'https://www.berlin.de/polizei/service/versammlungsbehoerde/versammlungen-aufzuege/index.php/index/index.json?q=datum';
 
 export async function getProtests() {
-
   
   const parsedResults = await axios.get<ApiResponse>(apiUrl)
   .then( results => {
