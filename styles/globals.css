@@ -17,11 +17,19 @@ a {
 
 main {
     margin: 1rem auto;
-    border: red 1px solid;
+
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 
-    width: 75vw;
+    width: 80vw;
+}
+
+@media only screen and (max-width: 740px) {
+    main {
+        width: 100vw;
+        justify-content: center;
+    }
 }

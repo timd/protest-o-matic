@@ -8,16 +8,29 @@ import styles from "../styles/Home.module.css"
 const Home: NextPage = ({ protests }) => {
     console.log(protests[0])
     return (
-        <main>
-            <CCard style={{ width: "18rem ", height: "12rem" }}>
-                <CCardBody>
-                    <CCardTitle>{protests[0].thema}</CCardTitle>
-                    <CCardText>
-                        {protests[0].strasse_nr} {protests[0].plz}
-                    </CCardText>
-                </CCardBody>
-            </CCard>
-        </main>
+        <>
+            <main>
+                {protests &&
+                    protests.map((protest, index) => (
+                        <div className="card" key={index}>
+                            <CCard
+                                style={{
+                                    width: "25vw",
+                                    height: "30vh",
+                                    overflow: "scroll",
+                                }}
+                            >
+                                <CCardBody>
+                                    <CCardTitle>{protest.thema}</CCardTitle>
+                                    <CCardText>
+                                        {protest.strasse_nr} {protest.plz}
+                                    </CCardText>
+                                </CCardBody>
+                            </CCard>
+                        </div>
+                    ))}
+            </main>
+        </>
     )
 }
 
