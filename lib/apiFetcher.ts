@@ -3,11 +3,11 @@ import axios from 'axios';
 interface ApiResponse {
   messages: Object
   results: Object
-  index: Array<Demonstration>
+  index: Array<IDemonstration>
   item: Array<Object>
 }
 
-interface Demonstration {
+export interface IDemonstration {
   id: string
   datum: string
   von: string
@@ -19,7 +19,7 @@ interface Demonstration {
   lfdnr: string
 }
 
-export async function getSourceJson() {
+export async function getProtests() {
 
   const parsedResults = await axios.get<ApiResponse>('https://www.berlin.de/polizei/service/versammlungsbehoerde/versammlungen-aufzuege/index.php/index/index.json?q=datum')
   .then( results => {
