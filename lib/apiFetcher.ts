@@ -21,9 +21,11 @@ export interface IDemonstration {
   aufzugsstrecke: string
 }
 
-export async function getProtests() {
+const apiUrl = 'https://www.berlin.de/polizei/service/versammlungsbehoerde/versammlungen-aufzuege/index.php/index/index.json?q=datum';
 
-  const parsedResults = await axios.get<ApiResponse>('https://www.berlin.de/polizei/service/versammlungsbehoerde/versammlungen-aufzuege/index.php/index/index.json?q=datum')
+export async function getProtests() {
+  
+  const parsedResults = await axios.get<ApiResponse>(apiUrl)
   .then( results => {
     return parseSourceJson(results.data.index);
   }).catch( err => {
@@ -42,15 +44,16 @@ export async function getProtests() {
 
 function parseSourceJson(index: Array<IDemonstration>): Array<IDemonstration> {
 
-  const today = new Date();
-  const filterString = format(today, 'dd.LL.yyyy');
+  const filterString = format(new Date(), 'dd.LL.yyyy');
 
   const filteredResults = index.filter(demo => {
     return demo.datum == filterString;
   });
 
+  const splitString = ' (vom';
+
   filteredResults.forEach( demo => {
-    const newThema = demo.thema.split(' (vom');
+    const newThema = demo.thema.split(splitString);
     demo.thema = newThema[0];
   })
 
