@@ -3,7 +3,6 @@ import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
 import { IDemonstration, getProtests } from "../lib/apiFetcher"
 
 const Home = ( { protests } : { protests: [IDemonstration] }) => {
-    console.log(protests[0])
     return (
         <>
             <main>
