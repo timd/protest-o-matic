@@ -1,11 +1,8 @@
-import type { NextPage } from "next"
 import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
-import { getProtests } from "../lib/apiFetcher"
-import Head from "next/head"
-import Image from "next/image"
-import styles from "../styles/Home.module.css"
 
-const Home: NextPage = ({ protests }) => {
+import { IDemonstration, getProtests } from "../lib/apiFetcher"
+
+const Home = ( { protests } : { protests: [IDemonstration] }) => {
     console.log(protests[0])
     return (
         <>
