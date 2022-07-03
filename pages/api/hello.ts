@@ -1,13 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { getSourceJson } from '../../lib/apiFetcher';
 
-type Data = {
-  name: string
-}
-
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<any>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+
+  const results = await getSourceJson();
+  res.status(200).json({ results: results });
+
 }
