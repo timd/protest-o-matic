@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { format } from 'date-fns';
 
 interface ApiResponse {
   messages: Object
@@ -38,9 +39,13 @@ export async function getProtests() {
 
 }
 
-function parseSourceJson(index: Array<Demonstration>): Array<Demonstration> {
+function parseSourceJson(index: Array<IDemonstration>): Array<IDemonstration> {
+
+  const today = new Date();
+  const filterString = format(today, 'dd.LL.yyyy');
+
   const filteredResults = index.filter(demo => {
-    return demo.datum == "03.07.2022";
+    return demo.datum == filterString;
   });
   return filteredResults;
 }
