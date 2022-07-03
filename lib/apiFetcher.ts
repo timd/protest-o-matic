@@ -1,22 +1,24 @@
 import axios from 'axios';
+import { format } from 'date-fns';
 
 interface ApiResponse {
-  messages: Object
   results: Object
-  index: Array<IDemonstration>
+  messages: Object
   item: Array<Object>
+  index: Array<IDemonstration>
+ 
 }
 
 export interface IDemonstration {
   id: string
-  datum: string
   von: string
   bis: string
-  thema: string
   plz: string
+  datum: string
+  thema: string
+  lfdnr: string
   strasse_nr: string
   aufzugsstrecke: string
-  lfdnr: string
 }
 
 export async function getProtests() {
@@ -38,9 +40,19 @@ export async function getProtests() {
 
 }
 
-function parseSourceJson(index: Array<Demonstration>): Array<Demonstration> {
+function parseSourceJson(index: Array<IDemonstration>): Array<IDemonstration> {
+
+  const today = new Date();
+  const filterString = format(today, 'dd.LL.yyyy');
+
   const filteredResults = index.filter(demo => {
-    return demo.datum == "03.07.2022";
+    return demo.datum == filterString;
   });
+
+  filteredResults.forEach( demo => {
+    const newThema = demo.thema.split(' (vom');
+    demo.thema = newThema[0];
+  })
+
   return filteredResults;
 }
