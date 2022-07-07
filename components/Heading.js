@@ -10,7 +10,7 @@ export default function Heading() {
                     name="Berlin protests"
                     content="list of demonstrations happening today"
                 />
-                <link rel="icon" href="./favicon.ico" />
+                <link rel="icon" href="./sparkspeech.ico" />
             </Head>
             <header>
                 <p>Protest-o-Matic</p>
