@@ -1,7 +1,10 @@
 import Head from "next/head"
-import { getProtests } from "../lib/apiFetcher"
+import Link from "next/link"
 
 export default function Heading() {
+    const today = new Date()
+    const month = today.toLocaleString("default", { month: "long" })
+
     return (
         <>
             <Head>
@@ -13,7 +16,23 @@ export default function Heading() {
                 <link rel="icon" href="./sparkspeech.ico" />
             </Head>
             <header>
-                <p>Protest-o-Matic</p>
+                <h1>Protest-o-Matic</h1>
+                <p>
+                    demonstrations happening today,{" "}
+                    <span>
+                        {today.getDate()} {month}
+                    </span>
+                    , in Berlin
+                </p>
+                <p className="small">
+                    data provided by{" "}
+                    <Link
+                        className="link"
+                        href="https://www.berlin.de/polizei/"
+                    >
+                        Polizei Berlin
+                    </Link>
+                </p>
             </header>
         </>
     )
