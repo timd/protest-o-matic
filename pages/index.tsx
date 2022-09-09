@@ -1,14 +1,29 @@
 import { useState } from "react"
 import Slug from "../components/Slug"
-import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
-
+import Heading from "../components/Heading.js"
 import { IDemonstration, getProtests } from "../lib/apiFetcher"
+import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
 
 const Home = ({ protests }: { protests: [IDemonstration] }) => {
     const [fullHeight, setFullHeight] = useState(false)
+    const [language, setLanguage] = useState("En")
+
+    function toggleLanguage() {
+        if (language === "En") {
+            setLanguage("De")
+        } else {
+            setLanguage("En")
+        }
+    }
 
     return (
         <>
+            <div className="language">
+                <button type="button" onClick={() => toggleLanguage()}>
+                    {language === "En" ? `🇩🇪` : `🇬🇧`}
+                </button>
+            </div>
+            <Heading language={language} />
             <main>
                 {protests &&
                     protests.map((protest, index) => (
@@ -39,7 +54,15 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                                         </CCardText>
                                     ) : (
                                         <CCardText className="no-hover">
-                                            🌐 no address provided
+                                            {language === "En" ? (
+                                                <span>
+                                                    🌐 no address provided
+                                                </span>
+                                            ) : (
+                                                <span>
+                                                    🌐 keine Adresse angegeben
+                                                </span>
+                                            )}
                                         </CCardText>
                                     )}
                                     {protest.von !== "00:00" ? (
@@ -50,7 +73,13 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                                         </CCardText>
                                     ) : (
                                         <CCardText className="time ">
-                                            🕖 no time provided
+                                            {language === "En" ? (
+                                                <span>🕖 no time provided</span>
+                                            ) : (
+                                                <span>
+                                                    🕖 keine Uhrzeit angegeben
+                                                </span>
+                                            )}
                                         </CCardText>
                                     )}
                                 </CCardBody>

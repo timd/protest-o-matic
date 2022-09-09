@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 
-export default function Heading() {
+export default function Heading({ language }) {
     const today = new Date()
     const month = today.toLocaleString("default", { month: "long" })
 
@@ -16,23 +16,47 @@ export default function Heading() {
                 <link rel="icon" href="./sparkspeech.ico" />
             </Head>
             <header>
-                <h1>Protest-o-Matic</h1>
-                <p>
-                    Want to protest about something? <br />
-                    These are the demonstrations taking place today in Berlin
-                </p>
-                <p className="date">
-                    {today.getDate()} {month}
-                </p>
-                <p className="small">
-                    data provided by{" "}
-                    <Link
-                        className="link"
-                        href="https://www.berlin.de/polizei/"
-                    >
-                        Polizei Berlin
-                    </Link>
-                </p>
+                <div>
+                    <h1>Protest-o-Matic</h1>
+                    <p>
+                        {language === "En" ? (
+                            <>
+                                <span> Want to protest about something?</span>
+                                <br />
+                                <span>
+                                    These are the demonstrations taking place
+                                    today in Berlin
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                <span>Hast du Lust zu protestieren?</span>
+                                <br />
+                                <span>
+                                    Hier sind die Demonstrationen, die heute in
+                                    Berlin stattfinden
+                                </span>
+                            </>
+                        )}
+                    </p>
+
+                    <p className="date">
+                        {today.getDate()} {month}
+                    </p>
+                    <p className="small">
+                        {language === "En" ? (
+                            <span>data provided by</span>
+                        ) : (
+                            <span>daten der</span>
+                        )}{" "}
+                        <Link
+                            className="link"
+                            href="https://www.berlin.de/polizei/"
+                        >
+                            Polizei Berlin
+                        </Link>
+                    </p>
+                </div>
             </header>
         </>
     )
