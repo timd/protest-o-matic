@@ -1,6 +1,10 @@
 :root {
     --bk: #0a1c0a;
     --main: antiquewhite;
+    --link-hover: hotpink;
+}
+* {
+    box-sizing: border-box;
 }
 
 html,
@@ -19,8 +23,9 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
+p {
+    padding-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 header {
@@ -40,8 +45,8 @@ main {
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
-    margin-top: -20px;
-    padding: 0 20px;
+    margin-top: -18px;
+    padding: 10px 20px;
 }
 
 button {
@@ -58,11 +63,16 @@ button:hover {
     color: var(--main);
 }
 
+.small {
+    font-size: 1rem !important;
+}
+
 .card {
     width: 25%;
     width: 30vw;
-    height: 25%;
-    height: 25vh;
+    min-height: 25%;
+    min-height: 25vh;
+    height: fit-content;
     border-radius: 20px !important;
     margin-bottom: 10px !important;
 }
