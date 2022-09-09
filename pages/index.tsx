@@ -87,6 +87,17 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                         </div>
                     ))}
             </main>
+            <footer>
+                Built by{" "}
+                <a
+                    href="https://lucysco.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Lucy Toman
+                </a>{" "}
+                &copy; 2022
+            </footer>
         </>
     )
 }

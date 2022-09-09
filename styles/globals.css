@@ -102,6 +102,12 @@ main {
     margin-top: -18px;
 }
 
+footer {
+    color: var(--oceangreen);
+    background-color: var(--backgroundcol);
+    padding: 0 0 5px 10px;
+}
+
 .small {
     font-size: 1rem !important;
 }
@@ -122,8 +128,8 @@ main {
 .not-full {
     padding: 15px;
     overflow: hidden !important;
-    height: 20% !important;
-    height: 20vh !important;
+    height: 30% !important;
+    height: 30vh !important;
 }
 
 .full {
