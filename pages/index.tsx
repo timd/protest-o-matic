@@ -26,13 +26,30 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                                     </CCardTitle>
                                     {protest.strasse_nr ? (
                                         <CCardText>
-                                            🌐 {protest.strasse_nr}
-                                            {", "}
-                                            {protest.plz}
+                                            <a
+                                                className="card-text"
+                                                target="_blank"
+                                                href={`https://www.google.com/maps/search/?api=1&query=${protest.strasse_nr}+${protest.plz}`}
+                                            >
+                                                🌐 {protest.strasse_nr}
+                                                {", "}
+                                                {protest.plz}
+                                            </a>
                                         </CCardText>
                                     ) : (
-                                        <CCardText>
+                                        <CCardText className="no-hover">
                                             🌐 no address provided
+                                        </CCardText>
+                                    )}
+                                    {protest.von !== "00:00" ? (
+                                        <CCardText className="time ">
+                                            🕖 {protest.von}
+                                            {" - "}
+                                            {protest.bis}
+                                        </CCardText>
+                                    ) : (
+                                        <CCardText className="time ">
+                                            🕖 no time provided
                                         </CCardText>
                                     )}
                                 </CCardBody>

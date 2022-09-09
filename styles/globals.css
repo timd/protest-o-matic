@@ -116,10 +116,27 @@ button:hover {
 .card-text {
     font-size: 1rem !important;
     color: var(--oceangreen) !important;
+    padding-top: 10px;
 }
 
 .card-text:hover {
     color: var(--trafficred) !important;
+    cursor: pointer;
+}
+
+.no-hover:hover {
+    color: var(--oceangreen) !important;
+    cursor: default;
+}
+
+.time {
+    color: var(--liberty) !important;
+    padding: 0;
+}
+
+.time:hover {
+    color: var(--liberty) !important;
+    cursor: default;
 }
 
 @media only screen and (max-width: 1000px) {
