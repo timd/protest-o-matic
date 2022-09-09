@@ -18,8 +18,9 @@ export default function Heading() {
             <header>
                 <h1>Protest-o-Matic</h1>
                 <p>
-                    demonstrations happening today,{" "}
-                    <span>
+                    Want to protest about something? <br />
+                    These are the demonstrations taking place today,{" "}
+                    <span className="date">
                         {today.getDate()} {month}
                     </span>
                     , in Berlin

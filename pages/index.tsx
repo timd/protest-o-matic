@@ -1,9 +1,12 @@
-import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
+import { useState } from "react"
 import Slug from "../components/Slug"
+import { CCard, CCardBody, CCardTitle, CCardText } from "@coreui/react"
 
 import { IDemonstration, getProtests } from "../lib/apiFetcher"
 
 const Home = ({ protests }: { protests: [IDemonstration] }) => {
+    const [fullHeight, setFullHeight] = useState(false)
+
     return (
         <>
             <main>
@@ -11,16 +14,27 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                     protests.map((protest, index) => (
                         <div className="" key={index}>
                             <CCard>
-                                <CCardBody>
+                                <CCardBody
+                                    className={fullHeight ? `full` : `not-full`}
+                                >
                                     <CCardTitle>
                                         <Slug
                                             contents={protest.thema}
                                             limit={55}
+                                            setFullHeight={setFullHeight}
                                         />
                                     </CCardTitle>
-                                    <CCardText>
-                                        {protest.strasse_nr} {protest.plz}
-                                    </CCardText>
+                                    {protest.strasse_nr ? (
+                                        <CCardText>
+                                            🌐 {protest.strasse_nr}
+                                            {", "}
+                                            {protest.plz}
+                                        </CCardText>
+                                    ) : (
+                                        <CCardText>
+                                            🌐 no address provided
+                                        </CCardText>
+                                    )}
                                 </CCardBody>
                             </CCard>
                         </div>

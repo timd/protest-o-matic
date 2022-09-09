@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Slug = ({ contents, limit }) => {
+const Slug = ({ contents, limit, setFullHeight }) => {
     const [seeMore, setSeeMore] = useState(false)
 
     let slug = contents.slice(0, limit)
@@ -15,8 +15,13 @@ const Slug = ({ contents, limit }) => {
                             {slug}{" "}
                             <span>
                                 ...
-                                <button onClick={() => setSeeMore(true)}>
-                                    see more
+                                <button
+                                    onClick={() => {
+                                        setSeeMore(true)
+                                        setFullHeight(true)
+                                    }}
+                                >
+                                    &gt;&gt;&gt;
                                 </button>
                             </span>
                         </>
@@ -25,9 +30,14 @@ const Slug = ({ contents, limit }) => {
                         <>
                             {contents}
                             <span>
-                                <button onClick={() => setSeeMore(false)}>
+                                <button
+                                    onClick={() => {
+                                        setSeeMore(false)
+                                        setFullHeight(true)
+                                    }}
+                                >
                                     {" "}
-                                    see less
+                                    &lt;&lt;&lt;
                                 </button>
                             </span>
                         </>
