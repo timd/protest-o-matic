@@ -20,7 +20,7 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                                     <CCardTitle>
                                         <Slug
                                             contents={protest.thema}
-                                            limit={55}
+                                            limit={45}
                                             setFullHeight={setFullHeight}
                                         />
                                     </CCardTitle>

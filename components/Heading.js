@@ -19,11 +19,10 @@ export default function Heading() {
                 <h1>Protest-o-Matic</h1>
                 <p>
                     Want to protest about something? <br />
-                    These are the demonstrations taking place today,{" "}
-                    <span className="date">
-                        {today.getDate()} {month}
-                    </span>
-                    , in Berlin
+                    These are the demonstrations taking place today in Berlin
+                </p>
+                <p className="date">
+                    {today.getDate()} {month}
                 </p>
                 <p className="small">
                     data provided by{" "}
