@@ -29,6 +29,7 @@ const Home = ({ protests }: { protests: [IDemonstration] }) => {
                                             <a
                                                 className="card-text"
                                                 target="_blank"
+                                                rel="noopener noreferrer"
                                                 href={`https://www.google.com/maps/search/?api=1&query=${protest.strasse_nr}+${protest.plz}`}
                                             >
                                                 🌐 {protest.strasse_nr}
